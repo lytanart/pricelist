@@ -1,27 +1,288 @@
-<td>Nội thất văn phòng</td>
-                    <td>Gỗ công nghiệp MDF</td>
-                    <td class="price">1.500.000 đ</td>
-                    <td>Chống nước, có khe cắm sạc điện thoại</td>
-                </tr>
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bảng Báo Giá Phòng Tranh Lý Tấn</title>
+    <style>
+        /* CSS cho giao diện bảng báo giá */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f9f9f9;
+        }
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: #fff;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            margin-top: 20px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: center;
+            vertical-align: middle;
+        }
+        th {
+            background-color: #2c3e50;
+            color: white;
+            font-weight: bold;
+        }
+        tr:hover {
+            background-color: #f5f5f5;
+        }
+        /* CSS cho ảnh thu nhỏ trong bảng */
+        .pro-img {
+            max-width: 90px;
+            height: auto;
+            border-radius: 4px;
+            cursor: zoom-in; /* Hiển thị kính lúp khi di chuột vào ảnh */
+            transition: 0.2s;
+        }
+        .pro-img:hover {
+            opacity: 0.8;
+        }
 
-                <!-- Sản phẩm mẫu 2 -->
-                <tr>
-                    <td class="text-center">2</td>
-                    <td><strong>Ghế xoay công thái học G02</strong></td>
-                    <td class="text-center">
-                        <img src="images/ghe-cong-thai-hoc.jpg" alt="Ghế công thái học" class="product-img">
-                    </td>
-                    <td>65 x 65 x 120 cm</td>
-                    <td>12 kg</td>
-                    <td>Ghế văn phòng</td>
-                    <td>Lưới cao cấp, khung nhựa ABS</td>
-                    <td class="price">2.350.000 đ</td>
-                    <td>Ngả lưng 135 độ, có tựa đầu điều chỉnh</td>
-                </tr>
-            </tbody>
-        </table>
+        /* --- CSS CHO KHUNG PHÓNG TO ẢNH (MODAL) --- */
+        .lightbox {
+            display: none; /* Mặc định ẩn đi */
+            position: fixed;
+            z-index: 100;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.8); /* Nền đen mờ phía sau */
+            justify-content: center;
+            align-items: center;
+        }
+        .lightbox-content {
+            max-width: 85%;
+            max-height: 85%;
+            border-radius: 4px;
+            box-shadow: 0 4px 15px rgba(255,255,255,0.2);
+            animation: zoomEffect 0.3s ease;
+        }
+        /* Hiệu ứng phóng to mượt mà */
+        @keyframes zoomEffect {
+            from {transform: scale(0.7); opacity: 0;}
+            to {transform: scale(1); opacity: 1;}
+        }
+        /* Nút đóng (X) */
+        .close-btn {
+            position: absolute;
+            top: 20px;
+            right: 35px;
+            color: #fff;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>BẢNG BÁO GIÁ PHÒNG TRANH LÝ TẤN</h2>
+
+    <table>
+        <thead>
+            <tr>
+                <th>STT</th>
+                <th>Ảnh Tranh</th>
+                <th>Kích thước</th>
+		<th>Cân Nặng</th>
+		<th>Thể Loại</th>
+		<th>Chất Liệu</th>
+                <th>Giá</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Tranh 1 -->
+            <tr>
+                <td>1</td>
+                <td>
+                    <!-- Thay LINK_ANH_1 bằng link từ trang Postimages.org -->
+			<img src="images/anh1.jpg" alt="" class="pro-img" onclick="openLightbox(this.src)">
+                </td>
+                <td>55x75cm (đã đo bao gồm khung gỗ). Cộng thêm phần đắp nổi ra ngoài khung ~10cm</td>
+		<td>~7kg</td>
+		<td>Tranh đắp nổi 3D</td>
+		<td>Màu sơn dầu, khung gỗ tự nhiên, tấm nền nhựa, vải nga, đất sét Nhật</td>
+                <td><strong style="color: #c0392b;">12.000.000₫</strong></td>
+            </tr>
+            <!-- Tranh 2 -->
+            <tr>
+                <td>2</td>
+                <td>
+                    <!-- Thay LINK_ANH_2 bằng link từ trang Postimages.org -->
+                    <img src="images/anh2.jpg" alt="" class="pro-img" onclick="openLightbox(this.src)">
+                </td>
+                <td>55x95cm (đã đo bao gồm khung gỗ). Cộng thêm phần đắp nổi ra ngoài khung ~10cm</td>
+		<td>~7kg</td>
+		<td>Tranh đắp nổi 3D</td>
+		<td>Màu sơn dầu, khung gỗ tự nhiên, tấm nền nhựa, vải nga, đất sét Nhật</td>
+                <td><strong style="color: #c0392b;">15.000.000₫</strong></td>
+            </tr>
+            <!-- Tranh 3 -->
+            <tr>
+                <td>3</td>
+                <td>
+                    <!-- Thay LINK_ANH_3 bằng link từ trang Postimages.org -->
+                    <img src="images/anh3.jpgs" alt="" class="pro-img" onclick="openLightbox(this.src)">
+                </td>
+                <td>55x95cm (đã đo bao gồm khung gỗ). Cộng thêm phần đắp nổi ra ngoài khung ~10cm</td>
+		<td>~7kg</td>
+		<td>Tranh đắp nổi 3D</td>
+		<td>Màu sơn dầu, khung gỗ tự nhiên, tấm nền nhựa, vải nga, đất sét Nhật</td>
+                <td><strong style="color: #c0392b;">16.000.000₫</strong></td>
+            </tr>
+	<!-- Tranh 4 -->
+            <tr>
+                <td>4</td>
+                <td>
+                    <!-- Thay LINK_ANH_3 bằng link từ trang Postimages.org -->
+                    <img src="images/anh4.jpg" alt="" class="pro-img" onclick="openLightbox(this.src)">
+                </td>
+                <td>55x95cm (đã đo bao gồm khung gỗ). Cộng thêm phần đắp nổi ra ngoài khung ~ 7cm</td>
+		<td>~7kg</td>
+		<td>Tranh đắp nổi 3D</td>
+		<td>Màu sơn dầu, khung gỗ tự nhiên, tấm nền nhựa, vải nga, đất sét Nhật</td>
+                <td><strong style="color: #c0392b;">14.000.000₫</strong></td>
+            </tr>
+	<!-- Tranh 5 -->
+            <tr>
+                <td>5</td>
+                <td>
+                    <!-- Thay LINK_ANH_3 bằng link từ trang Postimages.org -->
+                    <img src="images/anh5.jpg" alt="" class="pro-img" onclick="openLightbox(this.src)">
+                </td>
+                <td>100x170cm</td>
+		<td>~15kg</td>
+		<td>Tranh đắp nổi 3D</td>
+		<td>Màu sơn dầu, foam, hỗn hợp tạo độ cứng và dai, tấm nền nhựa, vải nga, cỏ nhân tạo</td>
+                <td><strong style="color: #c0392b;">20.000.000₫</strong></td>
+            </tr>
+	<!-- Tranh 6 -->
+            <tr>
+                <td>6</td>
+                <td>
+                    <!-- Thay LINK_ANH_3 bằng link từ trang Postimages.org -->
+                    <img src="images/anh6.jpg" alt="" class="pro-img" onclick="openLightbox(this.src)">
+                </td>
+                <td>55x95cm (đã đo bao gồm khung gỗ). Cộng thêm phần đắp nổi ra ngoài khung dày ~ 12cm</td>
+		<td>~7kg</td>
+		<td>Tranh đắp nổi 3D</td>
+		<td>Màu sơn dầu, khung gỗ tự nhiên, tấm nền nhựa, vải nga, đất sét Nhật</td>
+                <td><strong style="color: #c0392b;">16.000.000₫</strong></td>
+            </tr>
+	<!-- Tranh 7 -->
+            <tr>
+                <td>7</td>
+                <td>
+                    <!-- Thay LINK_ANH_3 bằng link từ trang Postimages.org -->
+                    <img src="images/anh7.jpg" alt="" class="pro-img" onclick="openLightbox(this.src)">
+                </td>
+                <td>55x95cm (đã đo bao gồm khung gỗ). Cộng thêm phần đắp nổi ra ngoài khung dày ~ 5cm</td>
+		<td>~7kg</td>
+		<td>Tranh đắp nổi 3D</td>
+		<td>Màu sơn dầu, khung gỗ tự nhiên, tấm nền nhựa, vải nga, đất sét Nhật</td>
+                <td><strong style="color: #c0392b;">15.000.000₫</strong></td>
+            </tr>
+	<!-- Tranh 8 -->
+            <tr>
+                <td>8</td>
+                <td>
+                    <!-- Thay LINK_ANH_3 bằng link từ trang Postimages.org -->
+                    <img src="images/anh8.jpg" alt="" class="pro-img" onclick="openLightbox(this.src)">
+                </td>
+                <td>65x105cm (đã đo bao gồm khung gỗ). Đắp dày khoảng 7cm</td>
+		<td>~ 20kg</td>
+		<td>Tranh đắp nổi 3D có kết hợp dát vàng</td>
+		<td>Màu Acrylic, khung gỗ tự nhiên, tấm nền nhựa, vải nga, hỗn hợp tạo độ nhám, xi măng, vàng lá công nghiệp</td>
+                <td><strong style="color: #c0392b;">22.000.000₫</strong></td>
+            </tr>
+	<!-- Tranh 9 -->
+            <tr>
+                <td>9</td>
+                <td>
+                    <!-- Thay LINK_ANH_3 bằng link từ trang Postimages.org -->
+                    <img src="images/anh9.jpg" alt="" class="pro-img" onclick="openLightbox(this.src)">
+                </td>
+                <td>60x80cm (đã đo bao gồm khung gỗ)</td>
+		<td>~7kg</td>
+		<td>Tranh đắp nổi 3D</td>
+		<td>Màu sơn dầu, khung gỗ tự nhiên, tấm nền nhựa, vải nga, foam, hỗn hợp tạo độ cứng và xù xì, tổ chim nhân tạo</td>
+                <td><strong style="color: #c0392b;">16.000.000₫</strong></td>
+            </tr>
+	<!-- Tranh 10 -->
+            <tr>
+                <td>10</td>
+                <td>
+                    <!-- Thay LINK_ANH_3 bằng link từ trang Postimages.org -->
+                    <img src="images/anh10.jpg" alt="" class="pro-img" onclick="openLightbox(this.src)">
+                </td>
+                <td>55x95cm (đã đo bao gồm khung gỗ). Cộng thêm phần đắp nổi ra ngoài khung dày ~ 5cm</td>
+		<td>~5kg</td>
+		<td>Tranh vẽ tạo hiệu ứng nhám nền có kết hợp dát vàng</td>
+		<td>Màu Acrylic, khung gỗ tự nhiên, tấm nền nhựa, vải nga, hỗ hợp tạo độ nhám, vàng lá công nghiệp</td>
+                <td><strong style="color: #c0392b;">15.000.000₫</strong></td>
+            </tr>
+	<!-- Tranh 11 -->
+            <tr>
+                <td>11</td>
+                <td>
+                    <!-- Thay LINK_ANH_3 bằng link từ trang Postimages.org -->
+                    <img src="images/anh11.jpg" alt="" class="pro-img" onclick="openLightbox(this.src)">
+                </td>
+                <td>72x92cm (đã đo bao gồm khung gỗ)</td>
+		<td>~9kg</td>
+		<td>Tranh đắp nổi 3D</td>
+		<td>Màu sơn dầu, khung gỗ tự nhiên, tấm nền nhựa, vải nga, foam,đất sét Nhật, hỗn hợp tạo độ cứng và nhám</td>
+                <td><strong style="color: #c0392b;">20.000.000₫</strong></td>
+            </tr>
+	<!-- Tranh 12 -->
+            <tr>
+                <td>12</td>
+                <td>
+                    <!-- Thay LINK_ANH_3 bằng link từ trang Postimages.org -->
+                    <img src="images/anh12.jpg" alt="" class="pro-img" onclick="openLightbox(this.src)">
+                </td>
+                <td>55x75cm (đã đo bao gồm khung gỗ). Phần đắp nổi ra ngoài khung ~12cm</td>
+		<td>~7kg</td>
+		<td>Tranh đắp nổi 3D</td>
+		<td>Màu sơn dầu, khung gỗ tự nhiên, tấm nền nhựa, vải nga, đất sét Nhật</td>
+                <td><strong style="color: #c0392b;">15.000.000₫</strong></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <!-- Khung phóng to ảnh ẩn sẵn -->
+    <div id="myLightbox" class="lightbox" onclick="closeLightbox()">
+        <span class="close-btn">&times;</span>
+        <img class="lightbox-content" id="imgLarge">
     </div>
-</div>
 
+    <!-- Đoạn mã xử lý bấm vào ảnh là phóng to -->
+    <script>
+        function openLightbox(src) {
+            document.getElementById('imgLarge').src = src;
+            document.getElementById('myLightbox').style.display = 'flex';
+        }
+        function closeLightbox() {
+            document.getElementById('myLightbox').style.display = 'none';
+        }
+    </script>
+<div class="note-box">
+        <div class="note-title">📌 Ghi chú:</div>
+        <p class="note-content">
+            Có thể thay đổi kích thước và chi tiết tranh theo yêu cầu. Nhận đặt hàng vẽ theo mẫu. 
+            Giá sẽ thay đổi tuỳ theo độ khó và kích thước của tranh.
+        </p>
+    </div>
 </body>
 </html>
